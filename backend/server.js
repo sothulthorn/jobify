@@ -5,9 +5,9 @@ dotenv.config();
 import express from 'express';
 import morgan from 'morgan';
 import mongoose from 'mongoose';
-import { body, validationResult } from 'express-validator';
 
 import jobRouter from './routes/jobRouter.js';
+import authRouter from './routes/authRouter.js';
 import errorHandleMiddleware from './middleware/errorHandlerMiddleware.js';
 
 const app = express();
@@ -24,6 +24,7 @@ app.get('/', (req, res) => {
 
 // ROUTERS
 app.use('/api/v1/jobs', jobRouter);
+app.use('/api/v1/auth', authRouter);
 
 // NOT FOUND MIDDLEWARE
 app.use('*', (req, res) => {
