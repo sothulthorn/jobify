@@ -3436,6 +3436,8 @@ router.get('/admin/app-stats', [
 
 #### Setup Proxy
 
+A proxy in front-end development is a server that acts as an intermidiary between the client-side application and an external API, helping to bypass security restrictions and handle requests to different domains. It allows the front-end application to make API requests through the proxy, which forwards the requests to the external API and returns the response back to the application.
+
 - only in dev env
 - a must since cookies are sent back to the same server
 - spin up both servers (our own and vite dev)
