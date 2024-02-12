@@ -6,6 +6,7 @@ import express from 'express';
 import morgan from 'morgan';
 import mongoose from 'mongoose';
 import jobRouter from './routes/jobRouter.js';
+import errorHandleMiddleware from './middleware/errorHandlerMiddleware.js';
 
 const app = express();
 
@@ -32,11 +33,8 @@ app.use('*', (req, res) => {
   res.status(404).json({ message: 'Resource not found' });
 });
 
-// ERROR MIDDLEWARE
-app.use((err, req, res, next) => {
-  console.log(err);
-  res.status(500).json({ message: 'Something went wrong' });
-});
+// ERROR HANDLER MIDDLEWARE
+app.use(errorHandleMiddleware);
 
 const port = process.env.PORT || 5100;
 
