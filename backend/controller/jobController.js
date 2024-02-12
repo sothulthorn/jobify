@@ -1,6 +1,6 @@
 import Job from '../models/jobModel.js';
 import { StatusCodes } from 'http-status-codes';
-import { NotFoundError } from '../errors/customError.js';
+import { NotFoundError } from '../errors/customErrors.js';
 
 // GET ALL JOBS
 export const getAllJobs = async (req, res) => {

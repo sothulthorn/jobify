@@ -6,10 +6,15 @@ import {
   updateJob,
   deleteJob,
 } from '../controller/jobController.js';
+import { validateJobInput } from '../middleware/validationMiddleware.js';
 
 const router = express.Router();
 
-router.route('/').get(getAllJobs).post(createJob);
-router.route('/:id').get(getJob).delete(deleteJob).patch(updateJob);
+router.route('/').get(getAllJobs).post(validateJobInput, createJob);
+router
+  .route('/:id')
+  .get(getJob)
+  .delete(deleteJob)
+  .patch(validateJobInput, updateJob);
 
 export default router;
