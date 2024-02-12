@@ -3,6 +3,7 @@ dotenv.config();
 
 import express from 'express';
 import morgan from 'morgan';
+import mongoose from 'mongoose';
 import jobRouter from './routes/jobRouter.js';
 
 const app = express();
@@ -38,6 +39,12 @@ app.use((err, req, res, next) => {
 
 const port = process.env.PORT || 5100;
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+try {
+  await mongoose.connect(process.env.MONGODB_URI);
+  app.listen(port, () => {
+    console.log(`server running on PORT ${port}....`);
+  });
+} catch (error) {
+  console.log(error);
+  process.exit(1);
+}
