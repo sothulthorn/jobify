@@ -8,7 +8,9 @@ import mongoose from 'mongoose';
 
 import jobRouter from './routes/jobRouter.js';
 import authRouter from './routes/authRouter.js';
+
 import errorHandleMiddleware from './middleware/errorHandlerMiddleware.js';
+import { authenticateUser } from './middleware/authMiddleware.js';
 
 const app = express();
 
@@ -23,7 +25,7 @@ app.get('/', (req, res) => {
 });
 
 // ROUTERS
-app.use('/api/v1/jobs', jobRouter);
+app.use('/api/v1/jobs', authenticateUser, jobRouter);
 app.use('/api/v1/auth', authRouter);
 
 // NOT FOUND MIDDLEWARE
