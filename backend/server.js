@@ -95,6 +95,17 @@ app.delete('/api/v1/jobs/:id', (req, res) => {
   res.status(200).json({ message: 'Job deleted' });
 });
 
+// NOT FOUND MIDDLEWARE
+app.use('*', (req, res) => {
+  res.status(404).json({ message: 'Resource not found' });
+});
+
+// ERROR MIDDLEWARE
+app.use((err, req, res, next) => {
+  console.log(err);
+  res.status(500).json({ message: 'Something went wrong' });
+});
+
 const port = process.env.PORT || 5100;
 
 app.listen(port, () => {
