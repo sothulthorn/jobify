@@ -5,6 +5,8 @@ dotenv.config();
 import express from 'express';
 import morgan from 'morgan';
 import mongoose from 'mongoose';
+import { body, validationResult } from 'express-validator';
+
 import jobRouter from './routes/jobRouter.js';
 import errorHandleMiddleware from './middleware/errorHandlerMiddleware.js';
 
@@ -18,11 +20,6 @@ app.use(express.json());
 
 app.get('/', (req, res) => {
   res.send('Hello World');
-});
-
-app.post('/', (req, res) => {
-  console.log(req);
-  res.json({ message: 'data receive', data: req.body });
 });
 
 // ROUTERS
