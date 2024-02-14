@@ -1,4 +1,4 @@
-import Jobs from './Jobs';
+import Jobs from './Job';
 import Wrapper from '../assets/wrappers/JobsContainer';
 import { useAllJobsContext } from '../pages/AllJobs';
 
