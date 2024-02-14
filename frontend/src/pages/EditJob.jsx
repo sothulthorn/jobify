@@ -20,9 +20,46 @@ export const action = async () => {
 };
 
 const EditJob = () => {
-  const { data } = useLoaderData();
+  const { job } = useLoaderData();
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === 'submitting';
 
-  return <h1>EditJob</h1>;
+  return (
+    <Wrapper>
+      <Form method="post" className="form">
+        <h4 className="form-title">Edit Job</h4>
+        <div className=" form-center">
+          <FormRow type="text" name="position" defaultValue={job.position} />
+          <FormRow type="text" name="company" defaultValue={job.company} />
+          <FormRow
+            type="text"
+            name="location"
+            labelText="Job Location"
+            defaultValue={job.jobLocation}
+          />
+          <FormRowSelect
+            name="jobStatus"
+            labelText="Job Status"
+            defaultValue={job.jobStatus}
+            list={Object.values(JOB_STATUS)}
+          />
+          <FormRowSelect
+            name="jobType"
+            labelText="Job Type"
+            defaultValue={job.jobType}
+            list={Object.values(JOB_TYPE)}
+          />
+          <button
+            type="submit"
+            className="btn btn-block form-btn"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? 'Submitting...' : 'Submit'}
+          </button>
+        </div>
+      </Form>
+    </Wrapper>
+  );
 };
 
 export default EditJob;
