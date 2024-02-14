@@ -14,7 +14,7 @@ import {
   EditJob,
 } from './pages/index';
 
-import { action, action as registerAction } from './pages/Register';
+import { action as registerAction } from './pages/Register';
 import { action as loginAction } from './pages/Login';
 import { loader as dashboardLoader } from './pages/DashboardLayout';
 import { action as addJobAction } from './pages/AddJob';

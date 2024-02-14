@@ -15,8 +15,18 @@ export const loader = async ({ params }) => {
     return redirect('/dashboard/all-jobs');
   }
 };
-export const action = async () => {
-  return null;
+export const action = async ({ request, params }) => {
+  const formData = await request.formData();
+  const data = Object.fromEntries(formData);
+
+  try {
+    await customFetch.patch(`/jobs/${params.id}`, data);
+    toast.success('Job Editted Successfully');
+    return redirect('/dashboard/all-jobs');
+  } catch (error) {
+    toast.error(error.response.data.msg);
+    return error;
+  }
 };
 
 const EditJob = () => {
@@ -33,8 +43,8 @@ const EditJob = () => {
           <FormRow type="text" name="company" defaultValue={job.company} />
           <FormRow
             type="text"
-            name="location"
-            labelText="Job Location"
+            labelText="job location"
+            name="jobLocation"
             defaultValue={job.jobLocation}
           />
           <FormRowSelect
