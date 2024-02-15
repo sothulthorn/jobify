@@ -14,11 +14,19 @@ import userRouter from './routes/userRouter.js';
 import errorHandleMiddleware from './middleware/errorHandlerMiddleware.js';
 import { authenticateUser } from './middleware/authMiddleware.js';
 
+import cloudinary from 'cloudinary';
+
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import path from 'path';
 
 const app = express();
+
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_API_KEY,
+  api_secret: process.env.CLOUD_API_SECRET,
+});
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 app.use(express.static(path.resolve(__dirname, '../public')));
