@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import BarChart from './BarChart';
-import AreaChart from './AreaChart';
+import BarChart from './BarChartComponent';
+import AreaChart from './AreaChartComponent';
 import Wrapper from '../assets/wrappers/ChartsContainer';
 
 const ChartsContainer = ({ data }) => {
