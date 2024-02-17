@@ -15,10 +15,11 @@ const Landing = () => {
             job <span>tracking</span> app
           </h1>
           <p>
-            I'm baby wayfarers hoodie next level taiyaki brooklyn cliche blue
-            bottle single-origin coffee chia. Aesthetic post-ironic venmo,
-            quinoa lo-fi tote bag adaptogen everyday carry meggings +1 brunch
-            narwhal.
+            Are you ready to take the next step in your career journey? Look no
+            further! Jobify is here to connect you with a world of endless
+            possibilities. Whether you're a seasoned professional or just
+            starting out, our platform offers a diverse range of job
+            opportunities tailored to your skills, experience, and ambitions.
           </p>
           <Link to="/register" className="btn register-link">
             Register
