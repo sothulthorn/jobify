@@ -3,8 +3,8 @@ import mongoose from 'mongoose';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
-import Job from './models/JobModel.js';
-import User from './models/UserModel.js';
+import Job from '../models/JobModel.js';
+import User from '../models/UserModel.js';
 try {
   await mongoose.connect(process.env.MONGODB_URI);
   const user = await User.findOne({ email: 'james@email.com' });
